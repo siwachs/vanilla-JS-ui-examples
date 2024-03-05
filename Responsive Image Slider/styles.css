@@ -8,6 +8,7 @@ body {
 }
 
 svg {
+  cursor: pointer;
   width: 25px;
 }
 
@@ -25,6 +26,7 @@ header {
 }
 
 header .logo {
+  cursor: pointer;
   font-weight: bold;
 }
 
@@ -36,6 +38,10 @@ header .menu {
   justify-content: center;
   gap: 20px;
   font-weight: 500;
+}
+
+header .menu li {
+  cursor: pointer;
 }
 
 /* CSS Slider */
@@ -163,6 +169,7 @@ header .menu {
 }
 
 .thumbnails .item {
+  cursor: pointer;
   width: 150px;
   height: 220px;
   flex-shrink: 0;
@@ -193,6 +200,14 @@ header .menu {
 
   .slider .list .item h2 {
     font-size: 60px;
+  }
+
+  .slider .list .item .content p:nth-child(3) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .arrows {
