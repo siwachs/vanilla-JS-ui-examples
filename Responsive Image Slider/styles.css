@@ -160,12 +160,16 @@ header .menu li {
   width: 100%;
   height: 250px;
   padding: 0 50px;
-  box-sizing: border-box; /*When use left and right padding*/
+  box-sizing: border-box; /* When use left and right padding */
   overflow: auto;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  overflow: -moz-scrollbars-none; /* For older versions of Firefox */
 }
 
+/* Hide scrollbar for Webkit (Chrome, Safari, Opera) */
 .thumbnails::-webkit-scrollbar {
-  width: 0;
+  display: none;
 }
 
 .thumbnails .item {
@@ -193,13 +197,25 @@ header .menu li {
   inset: auto 10px 10px 10px;
 }
 
-@media screen and (max-width: 678px) {
-  .thumbnails {
-    justify-content: start;
+@media screen and (max-width: 640px) {
+  header {
+    display: none;
+  }
+
+  .slider {
+    margin-top: 0;
+  }
+
+  .slider .list .item .content p:nth-child(1) {
+    font-size: 14px;
   }
 
   .slider .list .item h2 {
-    font-size: 60px;
+    font-size: 28px;
+  }
+
+  .slider .list .item .content p:nth-child(2) {
+    font-size: 12px;
   }
 
   .slider .list .item .content p:nth-child(3) {
@@ -211,6 +227,22 @@ header .menu li {
   }
 
   .arrows {
+    right: 10px;
     top: 10%;
+  }
+
+  .arrows button {
+    height: 30px;
+    width: 30px;
+  }
+
+  .thumbnails {
+    justify-content: start;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .slider .list .item h2 {
+    font-size: 48px;
   }
 }
