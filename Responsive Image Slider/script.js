@@ -9,7 +9,7 @@ let activeSlide = 0;
 // Auto Play slider
 let refreshInterval = setInterval(() => {
   next.click();
-}, 4500);
+}, 5000);
 
 function showSlider() {
   const oldActiveSlide = document.querySelector(".slider .item.active");
@@ -24,7 +24,7 @@ function showSlider() {
   clearInterval(refreshInterval);
   refreshInterval = setInterval(() => {
     next.click();
-  }, 4500);
+  }, 5000);
 }
 
 next.onclick = function () {
