@@ -26,7 +26,6 @@ next.addEventListener("click", () => {
     currentSlide = 0; // Reset to the first slide if at the end
   }
   const offset = -currentSlide * 100;
-  console.log(offset);
   sliderImages.forEach((slideImage) => {
     slideImage.style.transform = `translateX(${offset}%)`;
   });
