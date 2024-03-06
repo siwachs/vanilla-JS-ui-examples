@@ -7,11 +7,13 @@ body {
 }
 
 .image-list {
+  overflow: hidden;
   display: flex;
 }
 
 .image-item {
   min-width: 100%;
+  transition: transform 0.3s;
 }
 
 .image-item img {
