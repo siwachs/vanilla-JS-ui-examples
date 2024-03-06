@@ -47,6 +47,7 @@ header .menu li {
 /* CSS Slider */
 .slider {
   height: 100vh;
+  max-height: 100vh;
   margin-top: -50px;
   position: relative;
 }
@@ -106,20 +107,20 @@ header .menu li {
   }
 }
 
-.slider .list .item .content p:nth-child(1),
-.slider .list .item .content h2,
-.slider .list .item .content p:nth-child(3) {
+.slider .list .item.active .content p:nth-child(1),
+.slider .list .item.active .content h2,
+.slider .list .item.active .content p:nth-child(3) {
   transform: translateY(30px);
   filter: blur(20px);
   opacity: 0;
   animation: displayContent 0.5s 0.7s ease-in-out 1 forwards; /*animation func, show with in, delay, motion effect, run n times, forward retain effect*/
 }
 
-.slider .list .item .content h2 {
+.slider .list .item.active .content h2 {
   animation-delay: 1s;
 }
 
-.slider .list .item .content p:nth-child(3) {
+.slider .list .item.active .content p:nth-child(3) {
   animation-delay: 1.3s;
 }
 
@@ -164,7 +165,6 @@ header .menu li {
   overflow: auto;
   scrollbar-width: none; /* For Firefox */
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
-  overflow: -moz-scrollbars-none; /* For older versions of Firefox */
 }
 
 /* Hide scrollbar for Webkit (Chrome, Safari, Opera) */
