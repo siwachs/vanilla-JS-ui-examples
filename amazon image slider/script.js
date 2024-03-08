@@ -1,32 +1,31 @@
 const prev = document.getElementById("slide-btn-prev");
 const next = document.getElementById("slide-btn-next");
-const sliderImages = document.querySelectorAll(
-  ".image-container .image-list .image-item"
+const imageContainer = document.querySelector(".slider .image-container");
+const sliderImageList = document.querySelector(
+  ".slider .image-container .image-list"
 );
-
-let currentSlide = 0; // Initialize currentSlide to 0
-const slidesCount = sliderImages.length - 1;
+let direction = -1;
 
 prev.addEventListener("click", () => {
-  if (currentSlide > 0) {
-    currentSlide--;
-  } else {
-    currentSlide = slidesCount; // If at the first slide, go to the last one
-  }
-  const offset = -currentSlide * 100;
-  sliderImages.forEach((slideImage) => {
-    slideImage.style.transform = `translateX(${offset}%)`;
-  });
+  direction = 1;
+  sliderImageList.style.transform = "translateX(100%)";
 });
 
 next.addEventListener("click", () => {
-  if (currentSlide < slidesCount) {
-    currentSlide++;
+  direction = -1;
+  sliderImageList.style.transform = "translateX(-100%)";
+});
+
+sliderImageList.addEventListener("transitionend", () => {
+  if (direction === -1) {
+    sliderImageList.append(sliderImageList.firstElementChild);
   } else {
-    currentSlide = 0; // Reset to the first slide if at the end
+    sliderImageList.prepend(sliderImageList.lastElementChild);
   }
-  const offset = -currentSlide * 100;
-  sliderImages.forEach((slideImage) => {
-    slideImage.style.transform = `translateX(${offset}%)`;
+
+  sliderImageList.style.transition = "none";
+  sliderImageList.style.transform = "translateX(0)";
+  setTimeout(() => {
+    sliderImageList.style.transition = "transform 0.3s";
   });
 });

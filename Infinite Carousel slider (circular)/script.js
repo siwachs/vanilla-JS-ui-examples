@@ -10,6 +10,15 @@ next.addEventListener("click", () => {
   slider.style.transform = "translate(-20%)";
 });
 
+prev.addEventListener("click", () => {
+  if (direction === -1) {
+    slider.appendChild(slider.firstElementChild);
+    direction = 1;
+  }
+  carousel.style.justifyContent = "flex-end";
+  slider.style.transform = "translate(20%)";
+});
+
 slider.addEventListener("transitionend", () => {
   if (direction === -1) {
     slider.appendChild(slider.firstElementChild);
@@ -22,13 +31,4 @@ slider.addEventListener("transitionend", () => {
   setTimeout(() => {
     slider.style.transition = "all 0.5s";
   });
-});
-
-prev.addEventListener("click", () => {
-  if (direction === -1) {
-    slider.appendChild(slider.firstElementChild);
-    direction = 1;
-  }
-  carousel.style.justifyContent = "flex-end";
-  slider.style.transform = "translate(20%)";
 });
