@@ -2,7 +2,7 @@ const slider = document.querySelector(".slider");
 const carousel = document.querySelector(".carousel");
 const prev = document.querySelector(".arrow-prev");
 const next = document.querySelector(".arrow-next");
-let direction;
+let direction = -1;
 
 next.addEventListener("click", () => {
   direction = -1;
