@@ -18,7 +18,6 @@ body {
 .container .slides {
   display: flex;
   height: 100%;
-  overflow: hidden;
 }
 
 .container .slides .slide {

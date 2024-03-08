@@ -5,5 +5,12 @@ const nextBtn = document.getElementById("slide-next-btn");
 
 let slides = document.querySelectorAll(".container .slides .slide");
 let index = 1;
-let firstSideClone = slides[0].cloneNode(true);
+
+let firstSlideClone = slides[0].cloneNode(true); // Deep copy clone child too
 let lastSlideClone = slides[slides.length - 1].cloneNode(true);
+
+firstSlideClone.id = "first-slide-clone";
+lastSlideClone.id = "last-slide-clone";
+
+slidesContainer.append(firstSlideClone);
+slidesContainer.prepend(lastSlideClone);
