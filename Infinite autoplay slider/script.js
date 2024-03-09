@@ -2,6 +2,8 @@ const slideContainer = document.querySelector(".container");
 const slidesContainer = document.querySelector(".container .slides");
 const prevBtn = document.getElementById("slide-prev-btn");
 const nextBtn = document.getElementById("slide-next-btn");
+let sliderInterval;
+const interval = 3600;
 
 const getSlides = () => document.querySelectorAll(".container .slides .slide");
 
@@ -27,9 +29,7 @@ slidesContainer.addEventListener("transitionend", () => {
     slidesContainer.style.transition = "none";
     index = 1;
     slidesContainer.style.transform = `translateX(${-slideWidth * index}px)`;
-  }
-
-  if (slides[index]?.id === lastSlideClone.id) {
+  } else if (slides[index]?.id === lastSlideClone.id) {
     slidesContainer.style.transition = "none";
     index = slides.length - 2;
     slidesContainer.style.transform = `translateX(${-slideWidth * index}px)`;
