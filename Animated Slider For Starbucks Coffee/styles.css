@@ -102,4 +102,34 @@ header nav {
 
 .carousel .list .item {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel .list .item .image {
+  width: var(--w-image);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: calc(100% - calc(var(--w-image) * var(--calculate)));
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  font-weight: 500;
+}
+
+.carousel .list .image img {
+  width: 90%;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 150px 50px #9e0c0c55);
+}
+
+.carousel .list .image figcaption {
+  font-family: Aboreto, Poppins, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
