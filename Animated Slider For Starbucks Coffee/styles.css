@@ -198,3 +198,40 @@ header nav {
 .carousel .arrows button:hover {
   background-color: #eee5;
 }
+
+/* Animation */
+.carousel .list .item {
+  display: none;
+}
+
+.carousel .list .item.active,
+.carousel .list .item.other_1,
+.carousel .list .item.other_2 {
+  display: block;
+}
+
+.carousel .list .item.active {
+  z-index: 2;
+}
+
+.carousel .list .item.other_1,
+.carousel .list .item.other_2 {
+  pointer-events: none;
+}
+
+.carousel .list .item.active .main-content {
+  animation: showContent 1s ease-in-out 1 forwards;
+}
+
+@keyframes showContent {
+  from {
+    clip-path: circle(
+      0% at 70% 50%
+    ); /* From 0% having a 70% width and 50% height */
+  }
+  to {
+    clip-path: circle(
+      100% at 70% 50%
+    ); /* To 100% having same width and height */
+  }
+}
