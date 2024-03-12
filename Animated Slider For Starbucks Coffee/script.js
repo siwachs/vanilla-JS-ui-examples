@@ -30,7 +30,16 @@ const changeSlide = () => {
   items[active].classList.add("active");
   items[other_1].classList.add("other_1");
   items[other_2].classList.add("other_2");
+  clearInterval(autoplay);
+  autoplay = setInterval(() => {
+    next.click();
+  }, 5000);
 };
+
+// Autoplay Slider
+let autoplay = setInterval(() => {
+  next.click();
+}, 5000);
 
 next.onclick = () => {
   carousel.classList.remove("prev");
