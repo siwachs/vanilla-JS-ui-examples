@@ -253,7 +253,7 @@ header nav {
 }
 
 .next .item.active .image {
-  --transform-from: var(--w-image);
+  --transform-from: calc(var(--w-image));
 }
 
 .next .item.other_1 .image {
@@ -265,4 +265,24 @@ header nav {
 .next .item.other_2 .image {
   z-index: 3;
   --transform-from: calc(var(--w-image) * 2);
+}
+
+/* Prev Button Animation */
+.prev .list .item .image img,
+.prev .list .item .image figcaption {
+  animation: prevEffect 0.5s ease-in-out 1 forwards;
+}
+
+@keyframes prevEffect {
+  from {
+    transform: translateX(calc(var(--transform-from)));
+  }
+  to {
+    transform: translateX(calc(var(--transform-from) + var(--w-image)));
+  }
+}
+
+.prev .list .item.active .image {
+  --transform-from: calc(var(--w-image) * -1);
+  overflow: hidden;
 }
