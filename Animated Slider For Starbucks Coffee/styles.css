@@ -264,7 +264,7 @@ header nav {
 
 .next .list .item.other_1 .image {
   z-index: 3;
-  --transform-from: 0;
+  --transform-from: 0px;
   overflow: hidden;
 }
 

@@ -20,8 +20,8 @@ prev.onclick = () => {
   carousel.classList.remove("next");
   carousel.classList.add("prev");
   active = active - 1 < 0 ? totalItems - 1 : active - 1;
-  other_1 = active + 1 > totalItems ? 0 : active + 1;
-  other_2 = active + 1 > totalItems ? 0 : active + 1;
+  other_1 = active + 1 >= totalItems ? 0 : active + 1;
+  other_2 = other_1 + 1 >= totalItems ? 0 : other_1 + 1;
   changeSlide();
 };
 
