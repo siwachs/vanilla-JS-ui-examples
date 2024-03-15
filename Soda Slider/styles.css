@@ -233,3 +233,41 @@ header nav a {
     bottom: 20px;
   }
 }
+
+/* effect */
+.carousel.effect .list .item.active {
+  --transform-from: -300px;
+  --transform-to: 0px;
+}
+
+@keyframes transformAnimation {
+  from {
+    transform: translateX(var(--transform-from));
+  }
+  to {
+    transform: translateX(var(--transform-to));
+  }
+}
+
+.carousel.effect .list .item .image {
+  animation: transformAnimation 1s ease-in-out 1 forwards;
+}
+
+.carousel.effect .list .item .title,
+.carousel.effect .list .item .category,
+.carousel.effect .list .item .description,
+.carousel.effect .list .item a {
+  animation: transformAnimation 1s ease-in-out 1 forwards;
+}
+
+.carousel.effect .list .item .category {
+  animation-delay: 0.1s;
+}
+
+.carousel.effect .list .item .description {
+  animation-delay: 0.2s;
+}
+
+.carousel.effect .list .item a {
+  animation-delay: 0.3;
+}

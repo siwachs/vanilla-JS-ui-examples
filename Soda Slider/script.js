@@ -45,6 +45,7 @@ const showSlider = (actionType) => {
     dots[active].classList.add("active");
   }
 
+  clearTimeout(removeEffect);
   removeEffect = setTimeout(() => {
     carousel.classList.remove("effect");
   }, 1500);
