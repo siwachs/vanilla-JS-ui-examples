@@ -12,8 +12,7 @@ header .logo img {
 }
 
 header {
-  width: 1140px;
-  max-width: 90%; /* For Screen Less than 1140 */
+  width: min(1140px, 90%); /* For Screen Less than 1140 */
   margin: auto;
   height: 60px;
   display: flex;
@@ -36,6 +35,8 @@ header nav a {
 
 /* Slider */
 .carousel {
+  overflow: hidden;
+  position: relative;
   width: 100%;
   background-color: #555;
   height: 720px;
@@ -74,4 +75,161 @@ header nav a {
   align-items: center;
   color: #eee4;
   z-index: -1; /* Place element below item */
+}
+
+.carousel .list .item .content .image {
+  flex-shrink: 0;
+  width: 300px;
+  height: 525px;
+  --left: -200px;
+  background: var(--image-src) var(--left) 0, url("images/soda.png") no-repeat; /* The 0 0 are left and right postition */
+  background-size: 100% auto; /* Width and height */
+
+  /* Blend two background together and mask images to cutout portion of images */
+  background-blend-mode: multiply;
+  -webkit-mask-image: url("images/soda.png");
+  -webkit-mask-size: 100% auto; /* Width and height */
+  -webkit-mask-repeat: no-repeat;
+
+  /* All browsers compatibility */
+  mask-image: url("images/soda.png");
+  mask-size: 100% auto; /* Width and height */
+  mask-repeat: no-repeat;
+
+  transition: background 1s ease-in-out;
+}
+
+.carousel .list .item .content {
+  width: min(1140px, 90%);
+  margin: auto;
+  height: 100%;
+  padding-top: 50px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carousel .list .item .content .info .title {
+  font-size: 6em;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1em;
+}
+
+.carousel .list .item .content .info .category {
+  opacity: 0.7;
+}
+
+.carousel .list .item .content .info .description {
+  margin: 1em 0;
+}
+
+.carousel .list .item .content .info a {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: #eee;
+  font-weight: 500;
+}
+
+/* For active Item */
+.carousel .list .item.active {
+  z-index: 2;
+}
+
+.carousel .list .item.active .image {
+  --left: 0;
+}
+
+/* Navigations */
+.carousel .arrows button {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-family: monospace;
+  background-color: #eee3;
+  border: none;
+  font-size: large;
+  cursor: pointer;
+  color: #fff;
+  left: 10%;
+  transition: background 0.5s, color 0.5s;
+}
+
+.carousel .arrows button#next {
+  left: unset;
+  right: 10%;
+}
+
+.carousel .arrows button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.carousel .dots li {
+  width: 15px;
+  height: 15px;
+  background-color: #eee5;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel .dots li.active {
+  background-color: #eee;
+}
+
+.carousel .dots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  bottom: 30px;
+  z-index: 2;
+  width: max-content;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: background 0.5s;
+}
+
+@media screen and (max-width: 767px) {
+  .carousel {
+    height: 100vh;
+  }
+
+  .carousel .list .item .content .info {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    backdrop-filter: blur(20px);
+  }
+
+  .carousel .list .item .content .info .title {
+    font-size: 2em;
+  }
+
+  .carousel .list .item .content .info .description {
+    font-size: 0.8em;
+    text-align: justify;
+  }
+
+  .carousel .list .item .content {
+    justify-content: center;
+    align-items: start;
+  }
+
+  .carousel .arrows button {
+    top: unset;
+    bottom: 20px;
+  }
 }
