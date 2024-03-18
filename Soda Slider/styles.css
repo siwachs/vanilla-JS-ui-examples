@@ -77,6 +77,18 @@ header nav a {
   z-index: -1; /* Place element below item */
 }
 
+.carousel .list .item .content {
+  width: min(1140px, 90%);
+  margin: auto;
+  height: 100%;
+  padding-top: 50px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .carousel .list .item .content .image {
   flex-shrink: 0;
   width: 300px;
@@ -97,18 +109,6 @@ header nav a {
   mask-repeat: no-repeat;
 
   transition: background 1s ease-in-out;
-}
-
-.carousel .list .item .content {
-  width: min(1140px, 90%);
-  margin: auto;
-  height: 100%;
-  padding-top: 50px;
-  box-sizing: border-box;
-  display: flex;
-  gap: 50px;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .carousel .list .item .content .info .title {
@@ -136,6 +136,10 @@ header nav a {
 }
 
 /* For active Item */
+.carousel .list .item {
+  z-index: 1;
+}
+
 .carousel .list .item.active {
   z-index: 2;
 }
@@ -172,18 +176,6 @@ header nav a {
   color: #000;
 }
 
-.carousel .dots li {
-  width: 15px;
-  height: 15px;
-  background-color: #eee5;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.carousel .dots li.active {
-  background-color: #eee;
-}
-
 .carousel .dots {
   list-style: none;
   margin: 0;
@@ -197,6 +189,18 @@ header nav a {
   left: 50%;
   transform: translateX(-50%);
   transition: background 0.5s;
+}
+
+.carousel .dots li {
+  width: 15px;
+  height: 15px;
+  background-color: #eee5;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel .dots li.active {
+  background-color: #eee;
 }
 
 @media screen and (max-width: 767px) {
@@ -235,11 +239,6 @@ header nav a {
 }
 
 /* effect */
-.carousel.effect .list .item.active {
-  --transform-from: -300px;
-  --transform-to: 0px;
-}
-
 @keyframes transformAnimation {
   from {
     transform: translateX(var(--transform-from));
@@ -249,25 +248,48 @@ header nav a {
   }
 }
 
-.carousel.effect .list .item .image {
+.carousel.effect .list .item .content .image,
+.carousel.effect .list .item .content .info .title,
+.carousel.effect .list .item .content .info .category,
+.carousel.effect .list .item .content .info .description,
+.carousel.effect .list .item .content .info a {
   animation: transformAnimation 1s ease-in-out 1 forwards;
 }
 
-.carousel.effect .list .item .title,
-.carousel.effect .list .item .category,
-.carousel.effect .list .item .description,
-.carousel.effect .list .item a {
-  animation: transformAnimation 1s ease-in-out 1 forwards;
-}
-
-.carousel.effect .list .item .category {
+.carousel.effect .list .item .content .info .category {
   animation-delay: 0.1s;
 }
 
-.carousel.effect .list .item .description {
+.carousel.effect .list .item .content .info .description {
   animation-delay: 0.2s;
 }
 
-.carousel.effect .list .item a {
+.carousel.effect .list .item .content .info a {
   animation-delay: 0.3;
+}
+
+/* Clip Path effect */
+.carousel.effect .list .item.active {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  animation: animateClipPath 0.9s ease-in-out 1 forwards;
+}
+
+@keyframes animateClipPath {
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.carousel.effect {
+  --transform: 300px;
+}
+
+.carousel.effect .list .item.active {
+  --transform-from: calc(var(--transform) * -1);
+  --transform-to: 0px;
+}
+
+.carousel.effect .list .item {
+  --transform-from: 0;
+  --transform-to: var(--transform);
 }
